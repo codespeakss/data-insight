@@ -30,9 +30,9 @@ func main() {
 		Brokers:        strings.Split(*brokers, ","),
 		GroupID:        *groupID,
 		Topic:          *topic,
-		MinBytes:       10e3, // 10KB
-		MaxBytes:       10e6, // 10MB
-		CommitInterval: time.Second,
+		MinBytes:       1e1,
+		MaxBytes:       10e6,
+		CommitInterval: 50 * time.Microsecond,
 	})
 
 	defer reader.Close()
@@ -65,4 +65,3 @@ func main() {
 
 	log.Println("✅ 已安全退出 Kafka 消费客户端。")
 }
-
